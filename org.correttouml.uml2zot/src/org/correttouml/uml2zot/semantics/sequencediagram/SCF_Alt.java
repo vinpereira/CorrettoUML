@@ -2,13 +2,13 @@ package org.correttouml.uml2zot.semantics.sequencediagram;
 
 import java.util.ArrayList;
 
-import org.correttouml.grammars.booleanExpressions.booleanExpression;
+//import org.correttouml.grammars.booleanExpressions.booleanExpression;
 import org.correttouml.uml.diagrams.sequencediagram.CF_Alt;
 import org.correttouml.uml.diagrams.sequencediagram.CombinedFragment;
 import org.correttouml.uml.diagrams.sequencediagram.InteractionOperand;
 import org.correttouml.uml2zot.semantics.util.bool.*;
 import org.correttouml.uml2zot.semantics.util.trio.Predicate;
-import org.omg.PortableInterceptor.NON_EXISTENT;
+//import org.omg.PortableInterceptor.NON_EXISTENT;
 
 /**
 *@author Mohammad Mehdi Pourhashem Kallehbasti 

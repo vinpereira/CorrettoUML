@@ -4,10 +4,10 @@ import org.correttouml.uml.diagrams.classdiagram.Clock;
 import org.correttouml.uml.diagrams.sequencediagram.*;
 import org.correttouml.uml2zot.semantics.events.SClockTickEvent;
 import org.correttouml.uml2zot.semantics.util.bool.Iff;
-import org.correttouml.uml2zot.semantics.util.bool.Not;
-import org.correttouml.uml2zot.semantics.util.bool.Or;
+//import org.correttouml.uml2zot.semantics.util.bool.Not;
+//import org.correttouml.uml2zot.semantics.util.bool.Or;
 import org.correttouml.uml2zot.semantics.util.trio.Predicate;
-import org.correttouml.uml2zot.semantics.util.trio.Since_ei;
+//import org.correttouml.uml2zot.semantics.util.trio.Since_ei;
 import org.eclipse.uml2.uml.MessageOccurrenceSpecification;
 
 /**

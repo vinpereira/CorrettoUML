@@ -4,7 +4,7 @@ package org.correttouml.uml2zot.semantics.iod;
 import java.util.Collection;
 import java.util.Iterator;
 
-import org.correttouml.uml.MadesModel;
+//import org.correttouml.uml.MadesModel;
 import org.correttouml.uml.diagrams.events.Event;
 import org.correttouml.uml.diagrams.iod.AcceptEventAction;
 import org.correttouml.uml.diagrams.iod.ControlFlow;

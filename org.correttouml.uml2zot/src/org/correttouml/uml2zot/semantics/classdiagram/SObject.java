@@ -2,12 +2,12 @@ package org.correttouml.uml2zot.semantics.classdiagram;
 
 import org.correttouml.uml.diagrams.classdiagram.Attribute;
 import org.correttouml.uml.diagrams.classdiagram.Object;
-import org.correttouml.uml.diagrams.classdiagram.Operation;
+//import org.correttouml.uml.diagrams.classdiagram.Operation;
 import org.correttouml.uml.diagrams.statediagram.StateDiagram;
 import org.correttouml.uml2zot.semantics.SMadesModel;
 import org.correttouml.uml2zot.semantics.statediagram.SStateDiagram;
-import org.correttouml.uml2zot.semantics.util.trio.Constant;
-import org.correttouml.uml2zot.semantics.util.trio.EQ;
+//import org.correttouml.uml2zot.semantics.util.trio.Constant;
+//import org.correttouml.uml2zot.semantics.util.trio.EQ;
 
 
 public class SObject {

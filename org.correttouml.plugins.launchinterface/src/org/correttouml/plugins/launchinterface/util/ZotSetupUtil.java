@@ -66,7 +66,6 @@ public class ZotSetupUtil {
 		  return directory.delete();
 		}
 		
-		@SuppressWarnings("unused")
 		public static boolean TimeBoundisNotEmpty(final String str) {
 		    try {
 		        Integer.parseInt(str);

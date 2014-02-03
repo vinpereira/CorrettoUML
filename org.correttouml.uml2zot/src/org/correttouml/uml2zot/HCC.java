@@ -1,6 +1,6 @@
 package org.correttouml.uml2zot;
 
-import static org.junit.Assert.assertTrue;
+//import static org.junit.Assert.assertTrue;
 
 import java.awt.EventQueue;
 
@@ -10,10 +10,10 @@ import javax.swing.JTextField;
 import javax.swing.BoxLayout;
 import javax.swing.JLayeredPane;
 
-import org.junit.Test;
-import org.correttouml.uml2zot.*;
+//import org.junit.Test;
+//import org.correttouml.uml2zot.*;
 import org.correttouml.uml2zot.semantics.util.bool.And;
-import org.correttouml.uml2zot.semantics.util.bool.BooleanFormulae;
+//import org.correttouml.uml2zot.semantics.util.bool.BooleanFormulae;
 import org.correttouml.uml2zot.semantics.util.trio.Futr;
 import org.correttouml.uml2zot.semantics.util.trio.Predicate;
 
@@ -21,7 +21,7 @@ import java.awt.Label;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
-import java.io.FileNotFoundException;
+//import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -384,6 +384,6 @@ public void run() {
 //		i++;
 //		}
 //	}
-
+    reader.close();
 	}
 }
