@@ -4,7 +4,6 @@ package org.correttouml.uml2zot.semantics.iod;
 import java.util.Collection;
 import java.util.Iterator;
 
-//import org.correttouml.uml.MadesModel;
 import org.correttouml.uml.diagrams.events.Event;
 import org.correttouml.uml.diagrams.iod.AcceptEventAction;
 import org.correttouml.uml.diagrams.iod.ControlFlow;
@@ -18,7 +17,6 @@ import org.correttouml.uml.diagrams.iod.JoinNode;
 import org.correttouml.uml.diagrams.iod.MergeNode;
 import org.correttouml.uml.diagrams.iod.Node;
 import org.correttouml.uml.diagrams.iod.SequenceDiagramNode;
-import org.correttouml.uml2zot.UML2Zot;
 import org.correttouml.uml2zot.semantics.SMadesModel;
 import org.correttouml.uml2zot.semantics.events.SEvent;
 import org.correttouml.uml2zot.semantics.events.SEventFactory;
@@ -48,8 +46,7 @@ public class SIOD {
 	}
 	
 	public Predicate getEndPredicate(){
-	//	return new Predicate("IOD"+mades_iod.getUMLId().replace("-", "_")+"_END");
-		return new Predicate("IOD"+ UML2Zot.Utility.umlIDtoPrdID(mades_iod.getUMLId()) + "_END");
+		return new Predicate("IOD"+mades_iod.getUMLId().replace("-", "_")+"_END");
 	}
 	
     private BooleanFormulae RC(Node curr, Node prec) {
@@ -74,7 +71,7 @@ public class SIOD {
             return new SInitialNode(((InitialNode) prec)).getPredicate();
         }
         if (prec instanceof SequenceDiagramNode) {
-        	Predicate sd_end=new SSequenceDiagramNode(((SequenceDiagramNode) prec)).getEndPredicate();
+        	Predicate sd_end=new SSequenceDiagramNode(((SequenceDiagramNode) prec)).getPredicateEnd();
             return sd_end;
         }
         if (prec instanceof MergeNode) {
@@ -123,7 +120,7 @@ public class SIOD {
                 //ASSUMPION: The sequence diagram is preceded by only one node
                 Node prev = (Node) n.getIncomingNodes().iterator().next();
 
-                Predicate sd_start=new SSequenceDiagramNode(curr).getStartPredicate();
+                Predicate sd_start=new SSequenceDiagramNode(curr).getPredicateStart();
                 sem = sem + new Iff(sd_start, new Past(RC(curr, prev),1)) + "\n";
                 //sem = sem + new Iff(sd_start, RC(curr, prev) ) + "\n";
             }
@@ -188,9 +185,9 @@ public class SIOD {
         	Or insideCond=new Or();
         	Predicate inside_int_region=new SInterruptibleRegion(ir).getPredicate();
         	for(SequenceDiagramNode sdn: ir.getSequenceDiagramNodes()){
-        		Predicate sdn_stop=new SSequenceDiagramNode(sdn).getStopPredicate();
-        		Predicate sdn_end=new SSequenceDiagramNode(sdn).getEndPredicate();
-        		Predicate sdn_start=new SSequenceDiagramNode(sdn).getStartPredicate();
+        		Predicate sdn_stop=new SSequenceDiagramNode(sdn).getPredicateStop();
+        		Predicate sdn_end=new SSequenceDiagramNode(sdn).getPredicateEnd();
+        		Predicate sdn_start=new SSequenceDiagramNode(sdn).getPredicateStart();
         		Predicate interrupt=SEventFactory.getInstance(ir.getInterrupt().getEvent()).getPredicate();
         		sem = sem + new Iff(new And(interrupt, inside_int_region), sdn_stop)+"\n";
         		insideCond.addFormulae(new Or(sdn_start, new Since(new And(new Not(sdn_end), new Not(sdn_stop)),sdn_start)));

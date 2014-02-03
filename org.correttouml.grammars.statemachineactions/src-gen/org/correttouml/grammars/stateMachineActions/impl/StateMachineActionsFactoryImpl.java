@@ -30,7 +30,7 @@ public class StateMachineActionsFactoryImpl extends EFactoryImpl implements Stat
   {
     try
     {
-      StateMachineActionsFactory theStateMachineActionsFactory = (StateMachineActionsFactory)EPackage.Registry.INSTANCE.getEFactory(StateMachineActionsPackage.eNS_URI);
+      StateMachineActionsFactory theStateMachineActionsFactory = (StateMachineActionsFactory)EPackage.Registry.INSTANCE.getEFactory("http://www.correttouml.org/grammars/StateMachineActions"); 
       if (theStateMachineActionsFactory != null)
       {
         return theStateMachineActionsFactory;

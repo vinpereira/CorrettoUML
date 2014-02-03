@@ -57,28 +57,9 @@ public class Predicate implements Atom{
         return predicatename;
     }
 
-    public Predicate getStartPredicate(){
-    	return new Predicate(getPredicateName()+"_Start");
-    }
-    
-    public Predicate getEndPredicate(){
-    	return new Predicate(getPredicateName()+"_End");
-    }
-
-    public Predicate getSkipPredicate(){
-    	return new Predicate(getPredicateName()+"_Skip");
-    }
-    
-    public Predicate getStopPredicate(){
-    	return new Predicate(getPredicateName()+"_Stop");
-    }
-    
     @Override
     public String toString() {
-    	String s;
-//        if (predicatename.contains("_Start_Start"))////####del me
-//        	s= "ss";
-    	return "(-P- " +predicatename+ ")";
+        return "(-P- " +predicatename+ ")";
     }
     
     public boolean equals(Object o){
@@ -89,12 +70,6 @@ public class Predicate implements Atom{
     }    
 
     public int hashCode(){
-      try {
-		return this.predicatename.toUpperCase().hashCode();
-	} catch (Exception e) {
-		// TODO Auto-generated catch block
-		e.printStackTrace();
-	}
-      return 0;
+      return this.predicatename.toUpperCase().hashCode();
     }
 }

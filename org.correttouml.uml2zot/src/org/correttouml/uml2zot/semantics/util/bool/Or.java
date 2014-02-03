@@ -7,29 +7,18 @@ package org.correttouml.uml2zot.semantics.util.bool;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collection;
 
-import org.correttouml.uml2zot.semantics.util.trio.Predicate;
+public class Or implements BooleanFormulae {
 
-public class Or implements BooleanFormulae{
     ArrayList<BooleanFormulae> f = new ArrayList<BooleanFormulae>();
 
     public Or() {
     }
-    
-    public Or(ArrayList<BooleanFormulae> fList) {
-        f.addAll(fList);
-    }
-    
+
     public Or(BooleanFormulae... fList) {
         f.addAll(Arrays.asList(fList));
     }
-    
-    public Or(Collection<Predicate> pList) {
-        for(Predicate p : pList)
-        	f.add((BooleanFormulae)p);
-    }
-    
+
     public void addFormulae(BooleanFormulae fIn) {
         f.add(fIn);
     }
@@ -52,6 +41,6 @@ public class Or implements BooleanFormulae{
         }
         s = s + ")";
         return s;
+
     }
-    
 }

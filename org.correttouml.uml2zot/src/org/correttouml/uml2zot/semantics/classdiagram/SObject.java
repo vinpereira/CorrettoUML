@@ -2,7 +2,7 @@ package org.correttouml.uml2zot.semantics.classdiagram;
 
 import org.correttouml.uml.diagrams.classdiagram.Attribute;
 import org.correttouml.uml.diagrams.classdiagram.Object;
-//import org.correttouml.uml.diagrams.classdiagram.Operation;
+import org.correttouml.uml.diagrams.classdiagram.Operation;
 import org.correttouml.uml.diagrams.statediagram.StateDiagram;
 import org.correttouml.uml2zot.semantics.SMadesModel;
 import org.correttouml.uml2zot.semantics.statediagram.SStateDiagram;
@@ -20,11 +20,11 @@ public class SObject {
 	
 	public String getSemantics(){
 		String sem="";
-		////#### uncomment me <Mehdi>
-//		SMadesModel.printSeparatorSmall("Object operation definitions", false);
-//		for(Operation op: this.mades_obj.getOwningClass().getOperations()){
-//			sem=sem+new SOperation(op).getSemantics(mades_obj);
-//		}
+		
+		SMadesModel.printSeparatorSmall("Object operation definitions", false);
+		for(Operation op: this.mades_obj.getOwningClass().getOperations()){
+			sem=sem+new SOperation(op).getSemantics(mades_obj);
+		}
 		
 		SMadesModel.printSeparatorSmall("Attribute semantics", false);
 		for(Attribute attr: this.mades_obj.getOwningClass().getAttributes()){

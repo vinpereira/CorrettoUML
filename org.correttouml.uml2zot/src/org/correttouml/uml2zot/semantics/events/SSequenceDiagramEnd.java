@@ -16,7 +16,7 @@ public class SSequenceDiagramEnd implements SEvent {
 
 	@Override
 	public Predicate getPredicate(Object... optObject) {
-		Predicate sd_end=new SSequenceDiagram(mades_event.getSequenceDiagram()).getPredicate().getEndPredicate();
+		Predicate sd_end=new SSequenceDiagram(mades_event.getSequenceDiagram()).getPredicateEnd();
 		return sd_end;
 	}
 

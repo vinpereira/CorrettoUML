@@ -1,7 +1,6 @@
 package org.correttouml.uml2zot.semantics.sequencediagram;
 
 import org.correttouml.uml.diagrams.sequencediagram.ExecutionOccurrence;
-import org.correttouml.uml2zot.UML2Zot;
 import org.correttouml.uml2zot.semantics.util.bool.And;
 import org.correttouml.uml2zot.semantics.util.bool.Iff;
 import org.correttouml.uml2zot.semantics.util.bool.Not;
@@ -19,13 +18,12 @@ public class SExecutionOccurrence {
 	}
 	
 	public Predicate getPredicate(){
-		//return new Predicate("EXOCC"+this.mades_exocc.getUMLId().replace("-", "_"));
-		return new Predicate("EXOCC"+ UML2Zot.Utility.umlIDtoPrdID(this.mades_exocc.getUMLId()));
+		return new Predicate("EXOCC"+this.mades_exocc.getUMLId().replace("-", "_"));
 	}
 
 	public String getSemantics() {
         String sem = "";
-        Predicate sdstop=new SSequenceDiagram(this.mades_exocc.getSequenceDiagram()).getPredicate().getStopPredicate();
+        Predicate sdstop=new SSequenceDiagram(this.mades_exocc.getSequenceDiagram()).getPredicateStop();
         Predicate exoccstart=new SExecutionOccurrenceStart(this.mades_exocc.getExecutionOccurrenceStart()).getPredicate();
         Predicate exoccend=new SExecutionOccurrenceEnd(this.mades_exocc.getExecutionOccurrenceEnd()).getPredicate();
         Predicate exocc=this.getPredicate();

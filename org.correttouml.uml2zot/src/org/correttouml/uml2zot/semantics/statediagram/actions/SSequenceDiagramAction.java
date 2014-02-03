@@ -16,7 +16,7 @@ public class SSequenceDiagramAction implements SAction{
 	}
 	
 	public Predicate getPredicate(Object... optObjects){
-		return new SSequenceDiagram(this.mades_sdaction.getSequenceDiagram()).getPredicate().getStartPredicate();
+		return new SSequenceDiagram(this.mades_sdaction.getSequenceDiagram()).getPredicateStart();
 	}
 
 	@Override

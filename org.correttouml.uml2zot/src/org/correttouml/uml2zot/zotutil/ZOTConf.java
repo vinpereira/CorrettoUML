@@ -56,11 +56,10 @@ public class ZOTConf {
     	String loadplugin = "(asdf:operate 'asdf:load-op '" + plugin + ")\n";
         String loadtrioutils = "(use-package :trio-utils)\n";
         String loadsatsolverinterface = "";
-        String definetimebound = "(defvar TSPACE " + timebound + ")\n;;Configuration: Combine = "+SMadesModel.staticConfig.combine+"; Loop = " +SMadesModel.staticConfig.loop+"; Choice = "+SMadesModel.staticConfig.what+";\n";
+        String definetimebound = "(defvar TSPACE " + timebound + ")\n";
         BooleanFormulae property_formulae=null;
         if (model.hasProperty()) property_formulae=model.getProperty();
         String ae2zotVariables = model.getVariableDeclarationsForae2zot();
-        String declarations = model.getDeclarations();
         String definemodel = "(defvar AX1 \n (&& \n" + sem + "\n)) ;;END AX1 \n\n\n";
         String smtsolverparameter = "";
 
@@ -114,7 +113,8 @@ public class ZOTConf {
                 + ""
                 + definetimebound
                 + ""
-                + declarations
+                + ae2zotVariables
+                + ""
                 + definemodel
                 + property
                 + initaxiom
