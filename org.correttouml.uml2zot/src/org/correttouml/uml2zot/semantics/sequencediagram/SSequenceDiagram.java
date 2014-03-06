@@ -42,19 +42,19 @@ public class SSequenceDiagram {
 	}
 	
 	public Predicate getPredicate(){
-		return new Predicate("SD" + mades_sd.getName());
+		return new Predicate("SD_" + mades_sd.getName());
 	}
 	
 	public Predicate getPredicateStart(){
-		return new Predicate(this.mades_sd.getName()+"_START");
+		return new Predicate("SD_" + this.mades_sd.getName()+"_START");
 	}
 	
 	public Predicate getPredicateEnd(){
-		return new Predicate(this.mades_sd.getName()+"_END");
+		return new Predicate("SD_" + this.mades_sd.getName()+"_END");
 	}
 	
 	public Predicate getPredicateStop(){
-		return new Predicate(this.mades_sd.getName()+"_STOP");
+		return new Predicate("SD_" + this.mades_sd.getName()+"_STOP");
 	}
 
 	public String getSemantics() {

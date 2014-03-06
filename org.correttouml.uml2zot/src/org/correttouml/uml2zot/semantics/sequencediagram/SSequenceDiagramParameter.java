@@ -52,9 +52,9 @@ public class SSequenceDiagramParameter implements SVariable{
 	@Override
 	public BooleanFormulae getPredicate(Object... obj) {
         if(this.mades_sdp.getType()== PrimitiveType.INTEGER || this.mades_sdp.getType()==PrimitiveType.REAL)
-            return new TrioVar("SD"+this.mades_sdp.getSequenceDiagram().getName()+"PAR"+this.mades_sdp.getName(), this.mades_sdp.getType());
+            return new TrioVar("$SD_"+this.mades_sdp.getSequenceDiagram().getName()+"_PAR_"+this.mades_sdp.getName(), this.mades_sdp.getType());
         else{
-            return new Predicate("SD"+this.mades_sdp.getSequenceDiagram().getName()+"PAR"+this.mades_sdp.getName());
+            return new Predicate("$SD_"+this.mades_sdp.getSequenceDiagram().getName()+"_PAR_"+this.mades_sdp.getName());
         } 
 	}
 

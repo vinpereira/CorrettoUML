@@ -10,6 +10,7 @@ import org.correttouml.uml.diagrams.property.PTermElement;
 import org.correttouml.uml.diagrams.timeconstraints.TimeConstraint;
 import org.correttouml.uml.helpers.BooleanExpressionsParser;
 import org.correttouml.uml.helpers.UML2ModelHelper;
+import org.eclipse.emf.ecore.xmi.XMLResource;
 import org.eclipse.uml2.uml.Comment;
 import org.eclipse.uml2.uml.ExecutionOccurrenceSpecification;
 import org.eclipse.uml2.uml.Interaction;
@@ -104,7 +105,10 @@ public class SequenceDiagram implements ExpressionContext, PTermElement{
 		return this.uml_interaction.hashCode();
 	}
 
-
+	public String getUMLId() {
+		String id=((XMLResource) this.uml_interaction.eResource()).getID(uml_interaction);
+		return id;
+	}
 
 	
 }

@@ -27,19 +27,19 @@ public class SState {
         if(this.predicate==null){
             predicate=new Predicate();
         }
-        predicate.setPredicateName("$OBJ"+object.getName()+"_STD"+this.state.getStateDiagram().getName()+"_STATE"+this.state.getName());
+        predicate.setPredicateName("$OBJ_"+object.getName()+"_STD_"+this.state.getStateDiagram().getName()+"_STATE_"+this.state.getName());
         return predicate;
     }
     
     public Predicate getStateEnterPredicate(Object object){
         Predicate p=new Predicate();
-        p.setPredicateName("OBJ"+object.getName()+"_STD"+this.state.getStateDiagram().getName()+"_STATE"+this.state.getName()+"_ENTER");
+        p.setPredicateName("OBJ_"+object.getName()+"_STD_"+this.state.getStateDiagram().getName()+"_STATE_"+this.state.getName()+"_ENTER");
         return p;
     }
     
     public Predicate getStateExitPredicate(Object object){
         Predicate p=new Predicate();
-        p.setPredicateName("OBJ"+object.getName()+"_STD"+this.state.getStateDiagram().getName()+"_STATE"+state.getName()+"_EXIT");
+        p.setPredicateName("OBJ_"+object.getName()+"_STD_"+this.state.getStateDiagram().getName()+"_STATE_"+state.getName()+"_EXIT");
         return p;
     }
 

@@ -7,8 +7,10 @@ import java.io.FileWriter;
 
 import org.apache.log4j.Logger;
 import org.correttouml.uml.MadesModel;
+import org.correttouml.uml.diagrams.sequencediagram.SequenceDiagram;
 import org.correttouml.uml.helpers.UML2ModelHelper;
 import org.correttouml.uml2zot.semantics.SMadesModel;
+import org.correttouml.uml2zot.semantics.sequencediagram.SSequenceDiagram;
 import org.correttouml.uml2zot.semantics.statediagram.SState;
 import org.correttouml.uml2zot.semantics.util.trio.Predicate;
 import org.correttouml.uml2zot.zotutil.ZOTConf;
@@ -41,6 +43,8 @@ public class UML2Zot {
         FileWriter mpw = new FileWriter(mappings_file);
         BufferedWriter out = new BufferedWriter(mpw);
 		
+        out.write("============ State Diagrams Mapping ============" + "\n");
+        
 		for(org.correttouml.uml.diagrams.classdiagram.Class c: this.mades_model.getClassdiagram().getClasses()){
 			for(org.correttouml.uml.diagrams.statediagram.StateDiagram std: c.getStateDiagrams()){
 				for(org.correttouml.uml.diagrams.statediagram.State s: std.getStates()){
@@ -51,6 +55,14 @@ public class UML2Zot {
 					}
 				}
 			}
+		}
+		
+		out.write("\n" + "============ Sequence Diagrams Mapping ============" + "\n");
+		
+		for(SequenceDiagram sd: this.mades_model.getSequenceDiagrams()) {
+			SSequenceDiagram ssd = new SSequenceDiagram(sd);
+			Predicate p = ssd.getPredicate();
+			out.write(p.getPredicateName()+","+sd.getUMLId()+"\n");
 		}
 		
 		out.close();
