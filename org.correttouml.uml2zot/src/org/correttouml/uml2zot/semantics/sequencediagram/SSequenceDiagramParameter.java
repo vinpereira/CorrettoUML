@@ -52,10 +52,22 @@ public class SSequenceDiagramParameter implements SVariable{
 	@Override
 	public BooleanFormulae getPredicate(Object... obj) {
         if(this.mades_sdp.getType()== PrimitiveType.INTEGER || this.mades_sdp.getType()==PrimitiveType.REAL)
-            return new TrioVar("$SD_"+this.mades_sdp.getSequenceDiagram().getName()+"_PAR_"+this.mades_sdp.getName(), this.mades_sdp.getType());
+            return new TrioVar("$"+"SD_"+this.mades_sdp.getSequenceDiagram().getName()+"_PARAM_"+this.mades_sdp.getName(), this.mades_sdp.getType());
         else{
-            return new Predicate("$SD_"+this.mades_sdp.getSequenceDiagram().getName()+"_PAR_"+this.mades_sdp.getName());
+            return new Predicate("$"+"SD_"+this.mades_sdp.getSequenceDiagram().getName()+"_PARAM_"+this.mades_sdp.getName());
         } 
+	}
+	
+	/**
+	 * Get the Predicate of a Sequence Diagram parameter.
+	 * @author Vinicius Pereira
+	 * @return The predicate from Sequence Diagram parameter.
+	 */
+	public Predicate getPredicateVIP() {
+		Predicate predicate = new Predicate();
+		predicate.setPredicateName("$"+"SD_"+this.mades_sdp.getSequenceDiagram().getName()+"_PARAM_"+this.mades_sdp.getName());
+		
+		return predicate;
 	}
 
 }

@@ -3,6 +3,7 @@ package org.correttouml.uml.diagrams.sequencediagram;
 
 import org.correttouml.uml.diagrams.expressions.PrimitiveType;
 import org.correttouml.uml.diagrams.expressions.Variable;
+import org.eclipse.emf.ecore.xmi.XMLResource;
 import org.eclipse.uml2.uml.Parameter;
 
 public class SequenceDiagramParameter extends Variable{
@@ -30,6 +31,17 @@ public class SequenceDiagramParameter extends Variable{
 
 	public SequenceDiagram getSequenceDiagram() {
 		return new SequenceDiagram((org.eclipse.uml2.uml.Interaction) this.uml_parameter.getOwner());
+	}
+	
+	/**
+	 * Get the ID of a Sequence Diagram parameter.
+	 * 
+	 * @author Vinicius Pereira
+	 * @return the ID from UML Sequence Diagram parameter.
+	 */
+	public String getUMLId() {
+		String id=((XMLResource) this.uml_parameter.eResource()).getID(uml_parameter);
+		return id;
 	}
 
 }

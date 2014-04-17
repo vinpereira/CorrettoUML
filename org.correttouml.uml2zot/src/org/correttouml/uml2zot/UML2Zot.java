@@ -8,10 +8,12 @@ import java.io.FileWriter;
 import org.apache.log4j.Logger;
 import org.correttouml.uml.MadesModel;
 import org.correttouml.uml.diagrams.sequencediagram.SequenceDiagram;
+import org.correttouml.uml.diagrams.sequencediagram.SequenceDiagramParameter;
 import org.correttouml.uml.helpers.UML2ModelHelper;
 import org.correttouml.uml2zot.semantics.SMadesModel;
-import org.correttouml.uml2zot.semantics.sequencediagram.SSequenceDiagram;
+import org.correttouml.uml2zot.semantics.sequencediagram.SSequenceDiagramParameter;
 import org.correttouml.uml2zot.semantics.statediagram.SState;
+import org.correttouml.uml2zot.semantics.statediagram.STransition;
 import org.correttouml.uml2zot.semantics.util.trio.Predicate;
 import org.correttouml.uml2zot.zotutil.ZOTConf;
 import org.eclipse.uml2.uml.Model;
@@ -45,8 +47,10 @@ public class UML2Zot {
 		
         out.write("============ State Diagrams Mapping ============" + "\n");
         
+        // State Diagram - Alfredo
 		for(org.correttouml.uml.diagrams.classdiagram.Class c: this.mades_model.getClassdiagram().getClasses()){
 			for(org.correttouml.uml.diagrams.statediagram.StateDiagram std: c.getStateDiagrams()){
+				// States - Alfredo
 				for(org.correttouml.uml.diagrams.statediagram.State s: std.getStates()){
 					for(org.correttouml.uml.diagrams.classdiagram.Object obj: c.getObjects()){
 						SState ss=new org.correttouml.uml2zot.semantics.statediagram.SState(s);
@@ -54,15 +58,26 @@ public class UML2Zot {
 						out.write(p.getPredicateName()+","+s.getUMLId()+"\n");
 					}
 				}
+				// Transitions - Vinicius
+				for(org.correttouml.uml.diagrams.statediagram.Transition t: std.getTransitions()) {
+					for(org.correttouml.uml.diagrams.classdiagram.Object obj: c.getObjects()) {
+						STransition st = new org.correttouml.uml2zot.semantics.statediagram.STransition(t);
+						Predicate p=st.getPredicate(obj);
+						out.write(p.getPredicateName()+","+t.getUMLId()+"\n");
+					}
+				}
 			}
 		}
 		
 		out.write("\n" + "============ Sequence Diagrams Mapping ============" + "\n");
 		
+		// Parameter in Sequence Diagram - Vinicius
 		for(SequenceDiagram sd: this.mades_model.getSequenceDiagrams()) {
-			SSequenceDiagram ssd = new SSequenceDiagram(sd);
-			Predicate p = ssd.getPredicate();
-			out.write(p.getPredicateName()+","+sd.getUMLId()+"\n");
+			for(SequenceDiagramParameter sdp: sd.getSequenceDiagramParameters()) {
+				SSequenceDiagramParameter ssdp = new SSequenceDiagramParameter(sdp);
+				Predicate p = ssdp.getPredicateVIP();
+				out.write(p.getPredicateName()+","+sdp.getUMLId()+"\n");
+			}
 		}
 		
 		out.close();

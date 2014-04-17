@@ -33,7 +33,7 @@ public class STransition {
 	public Predicate getPredicate(Object object) {
         Predicate predicate=new Predicate();
         // MR: modified to avoid "-"
-        predicate.setPredicateName("OBJ"+object.getName()+"_STD"+this.mades_transition.getStateDiagram().getName()+"_TRANSITION"+this.mades_transition.getUMLId());
+        predicate.setPredicateName("$"+"OBJ_"+object.getName()+"_STD_"+this.mades_transition.getStateDiagram().getName()+"_TRANSITION_"+this.mades_transition.getUMLId());
         return predicate;
 	}
 	
