@@ -22,7 +22,7 @@ public class SMessage {
 	}
 	
 	public Predicate getPredicate(){
-		return new Predicate("MESSAGE"+this.mades_message.getUMLId().replace("-", "_"));
+		return new Predicate("$MESSAGE"+this.mades_message.getUMLId().replace("-", "_"));
 	}
 
 	public String getSemantics(){

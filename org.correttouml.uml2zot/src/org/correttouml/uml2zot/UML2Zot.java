@@ -7,10 +7,14 @@ import java.io.FileWriter;
 
 import org.apache.log4j.Logger;
 import org.correttouml.uml.MadesModel;
+import org.correttouml.uml.diagrams.sequencediagram.Message;
 import org.correttouml.uml.diagrams.sequencediagram.SequenceDiagram;
 import org.correttouml.uml.diagrams.sequencediagram.SequenceDiagramParameter;
+import org.correttouml.uml.diagrams.statediagram.Transition;
 import org.correttouml.uml.helpers.UML2ModelHelper;
 import org.correttouml.uml2zot.semantics.SMadesModel;
+import org.correttouml.uml.diagrams.classdiagram.Object;
+import org.correttouml.uml2zot.semantics.sequencediagram.SMessage;
 import org.correttouml.uml2zot.semantics.sequencediagram.SSequenceDiagramParameter;
 import org.correttouml.uml2zot.semantics.statediagram.SState;
 import org.correttouml.uml2zot.semantics.statediagram.STransition;
@@ -47,10 +51,10 @@ public class UML2Zot {
 		
         out.write("============ State Diagrams Mapping ============" + "\n");
         
-        // State Diagram - Alfredo
+        // State Diagram mapping - by Alfredo
 		for(org.correttouml.uml.diagrams.classdiagram.Class c: this.mades_model.getClassdiagram().getClasses()){
 			for(org.correttouml.uml.diagrams.statediagram.StateDiagram std: c.getStateDiagrams()){
-				// States - Alfredo
+				// States - by Alfredo
 				for(org.correttouml.uml.diagrams.statediagram.State s: std.getStates()){
 					for(org.correttouml.uml.diagrams.classdiagram.Object obj: c.getObjects()){
 						SState ss=new org.correttouml.uml2zot.semantics.statediagram.SState(s);
@@ -58,10 +62,10 @@ public class UML2Zot {
 						out.write(p.getPredicateName()+","+s.getUMLId()+"\n");
 					}
 				}
-				// Transitions - Vinicius
-				for(org.correttouml.uml.diagrams.statediagram.Transition t: std.getTransitions()) {
-					for(org.correttouml.uml.diagrams.classdiagram.Object obj: c.getObjects()) {
-						STransition st = new org.correttouml.uml2zot.semantics.statediagram.STransition(t);
+				// Transitions - by Vinicius
+				for(Transition t: std.getTransitions()) {
+					for(Object obj: c.getObjects()) {
+						STransition st = new STransition(t);
 						Predicate p=st.getPredicate(obj);
 						out.write(p.getPredicateName()+","+t.getUMLId()+"\n");
 					}
@@ -71,14 +75,23 @@ public class UML2Zot {
 		
 		out.write("\n" + "============ Sequence Diagrams Mapping ============" + "\n");
 		
-		// Parameter in Sequence Diagram - Vinicius
+		// Sequence Diagram mapping - by Vinicius
 		for(SequenceDiagram sd: this.mades_model.getSequenceDiagrams()) {
+			// Parameter - by Vinicius
 			for(SequenceDiagramParameter sdp: sd.getSequenceDiagramParameters()) {
 				SSequenceDiagramParameter ssdp = new SSequenceDiagramParameter(sdp);
-				Predicate p = ssdp.getPredicateVIP();
+				Predicate p = ssdp.getPredicateForSDParameter();
 				out.write(p.getPredicateName()+","+sdp.getUMLId()+"\n");
 			}
+			// Message - by Vinicius
+			for(Message msg: sd.getMessages()) {
+				SMessage smsg = new SMessage(msg);
+				Predicate p = smsg.getPredicate();
+				out.write(p.getPredicateName()+","+msg.getUMLId()+"\n");
+			}
 		}
+		
+		// TODO Put Class Diagram and Interactive Overview Diagram in mapping
 		
 		out.close();
 		}catch(Exception e){

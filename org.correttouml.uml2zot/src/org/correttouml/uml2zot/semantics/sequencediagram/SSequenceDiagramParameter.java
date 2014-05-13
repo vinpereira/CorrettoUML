@@ -63,7 +63,7 @@ public class SSequenceDiagramParameter implements SVariable{
 	 * @author Vinicius Pereira
 	 * @return The predicate from Sequence Diagram parameter.
 	 */
-	public Predicate getPredicateVIP() {
+	public Predicate getPredicateForSDParameter() {
 		Predicate predicate = new Predicate();
 		predicate.setPredicateName("$"+"SD_"+this.mades_sdp.getSequenceDiagram().getName()+"_PARAM_"+this.mades_sdp.getName());
 		
