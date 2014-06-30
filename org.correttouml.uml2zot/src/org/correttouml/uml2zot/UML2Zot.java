@@ -14,6 +14,10 @@ import org.correttouml.uml.diagrams.statediagram.Transition;
 import org.correttouml.uml.helpers.UML2ModelHelper;
 import org.correttouml.uml2zot.semantics.SMadesModel;
 import org.correttouml.uml.diagrams.classdiagram.Object;
+import org.correttouml.uml.diagrams.classdiagram.Operation;
+import org.correttouml.uml.diagrams.classdiagram.OperationParameter;
+import org.correttouml.uml2zot.semantics.classdiagram.SOperation;
+import org.correttouml.uml2zot.semantics.classdiagram.SOperationParameter;
 import org.correttouml.uml2zot.semantics.sequencediagram.SMessage;
 import org.correttouml.uml2zot.semantics.sequencediagram.SSequenceDiagramParameter;
 import org.correttouml.uml2zot.semantics.statediagram.SState;
@@ -91,7 +95,30 @@ public class UML2Zot {
 			}
 		}
 		
-		// TODO Put Class Diagram and Interactive Overview Diagram in mapping
+		out.write("\n" + "============ Class Diagrams Mapping ============" + "\n");
+		
+		// Class Diagram mapping - by Vinicius
+		for(org.correttouml.uml.diagrams.classdiagram.Class c: this.mades_model.getClassdiagram().getClasses()){ 
+			// Operation - by Vinicius
+			for(Operation op: c.getOperations()) {
+				for (Object obj: c.getObjects()) {
+					SOperation sop = new SOperation(op);
+					Predicate p = sop.getPredicate(obj);
+					out.write(p.getPredicateName()+","+op.getUMLId()+"\n");	
+				}
+				
+				// Operation Parameter - by Vinicius
+				for(OperationParameter opp: op.getParameters()) {
+					for (Object obj: c.getObjects()) {
+						SOperationParameter sopp = new SOperationParameter(opp);
+						Predicate p = sopp.getPredicateForCDOperationParameter(obj);
+						out.write(p.getPredicateName()+","+opp.getUMLId()+"\n");
+					}
+				}
+			}
+		}
+		
+		// TODO Put Interactive Overview Diagram in mapping
 		
 		out.close();
 		}catch(Exception e){

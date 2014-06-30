@@ -31,10 +31,10 @@ public class SAttribute implements SVariable {
 	public BooleanFormulae getPredicate(Object... obj) {
 		if (mades_attribute.getType() == PrimitiveType.INTEGER
 				|| mades_attribute.getType() == PrimitiveType.REAL)
-			return new TrioVar("OBJ" + obj[0].getName() + "ATTR"
+			return new TrioVar("$OBJ_" + obj[0].getName() + "_ATTR"
 					+ mades_attribute.getName(), mades_attribute.getType());
 		else if (mades_attribute.getType() == PrimitiveType.BOOLEAN) {
-			return new Predicate("OBJ" + obj[0].getName() + "ATTR"
+			return new Predicate("$OBJ_" + obj[0].getName() + "_ATTR"
 					+ mades_attribute.getName());
 		}
 		// WARNING: dovrei avere una eccezione

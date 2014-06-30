@@ -10,6 +10,7 @@ import org.correttouml.uml.MadesModel;
 import org.correttouml.uml.diagrams.property.PTermElement;
 import org.correttouml.uml.diagrams.sequencediagram.Message;
 import org.correttouml.uml.diagrams.sequencediagram.SequenceDiagram;
+import org.eclipse.emf.ecore.xmi.XMLResource;
 
 public class Operation implements PTermElement {
 
@@ -62,6 +63,17 @@ public class Operation implements PTermElement {
 	@Override
 	public int hashCode(){
 		return this.uml_operation.hashCode();
+	}
+	
+	/**
+	 * Get the ID of a Class Diagram operation.
+	 * 
+	 * @author Vinicius Pereira
+	 * @return the ID from UML Class Diagram operation.
+	 */
+	public String getUMLId() {
+		String id=((XMLResource) this.uml_operation.eResource()).getID(uml_operation);
+		return id;
 	}
 	
 }

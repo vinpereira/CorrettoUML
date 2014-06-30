@@ -20,13 +20,23 @@ public class SOperationParameter implements SVariable{
 	@Override
 	public BooleanFormulae getPredicate(Object... obj) {
         if(mades_operationparam.getType() == PrimitiveType.INTEGER || mades_operationparam.getType()==PrimitiveType.REAL)
-            return new TrioVar("OBJ_"+obj[0].getName()+"_PARAM_"+mades_operationparam.getName(), mades_operationparam.getType());
+            return new TrioVar("$OBJ_"+obj[0].getName()+"_PARAM_"+mades_operationparam.getName(), mades_operationparam.getType());
         else if(mades_operationparam.getType() == PrimitiveType.BOOLEAN){
-            return new Predicate("OBJ_"+obj[0].getName()+"_PARAM_"+mades_operationparam.getName());
+            return new Predicate("$OBJ_"+obj[0].getName()+"_PARAM_"+mades_operationparam.getName());
         }
 		return null;
 	}
 	
-	
+	/**
+	 * Get the Predicate of a Sequence Diagram parameter.
+	 * @author Vinicius Pereira
+	 * @return The predicate from Sequence Diagram parameter.
+	 */
+	public Predicate getPredicateForCDOperationParameter(Object obj) {
+		Predicate predicate = new Predicate();
+		predicate.setPredicateName("$"+"OBJ_"+obj.getName()+"_PARAM_"+this.mades_operationparam.getName());
+		
+		return predicate;
+	}
 	
 }

@@ -23,7 +23,7 @@ public class SOperation {
 	}
 	
 	public Predicate getPredicate(Object object){
-		return new Predicate("OBJ"+object.getName()+"OP"+mades_operation.getName());
+		return new Predicate("$OBJ_"+object.getName()+"_OP_"+mades_operation.getName());
 	}
 	
 	public String getSemantics(Object object){

@@ -3,6 +3,7 @@ package org.correttouml.uml.diagrams.classdiagram;
 
 import org.correttouml.uml.diagrams.expressions.PrimitiveType;
 import org.correttouml.uml.diagrams.expressions.Variable;
+import org.eclipse.emf.ecore.xmi.XMLResource;
 import org.eclipse.uml2.uml.Parameter;
 
 public class OperationParameter extends Variable {
@@ -37,6 +38,17 @@ public class OperationParameter extends Variable {
 	@Override
 	public int hashCode(){
 		return this.uml_parameter.hashCode();
+	}
+	
+	/**
+	 * Get the ID of a Class Diagram operation parameter.
+	 * 
+	 * @author Vinicius Pereira
+	 * @return the ID from UML Class Diagram operation parameter.
+	 */
+	public String getUMLId() {
+		String id=((XMLResource) this.uml_parameter.eResource()).getID(uml_parameter);
+		return id;
 	}
 
 }
