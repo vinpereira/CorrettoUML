@@ -19,6 +19,7 @@ import org.correttouml.uml.diagrams.classdiagram.OperationParameter;
 import org.correttouml.uml2zot.semantics.classdiagram.SOperation;
 import org.correttouml.uml2zot.semantics.classdiagram.SOperationParameter;
 import org.correttouml.uml2zot.semantics.sequencediagram.SMessage;
+import org.correttouml.uml2zot.semantics.sequencediagram.SSequenceDiagram;
 import org.correttouml.uml2zot.semantics.sequencediagram.SSequenceDiagramParameter;
 import org.correttouml.uml2zot.semantics.statediagram.SState;
 import org.correttouml.uml2zot.semantics.statediagram.STransition;
@@ -93,6 +94,10 @@ public class UML2Zot {
 				Predicate p = smsg.getPredicate();
 				out.write(p.getPredicateName()+","+msg.getUMLId()+"\n");
 			}
+			// Sequence Diagram - by Vinicius
+			SSequenceDiagram ssd = new SSequenceDiagram(sd);
+			Predicate p = ssd.getPredicate();
+			out.write(p.getPredicateName()+","+sd.getUMLId()+"\n");
 		}
 		
 		out.write("\n" + "============ Class Diagrams Mapping ============" + "\n");

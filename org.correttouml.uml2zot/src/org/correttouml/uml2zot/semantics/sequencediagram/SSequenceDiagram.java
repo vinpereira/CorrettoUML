@@ -42,7 +42,7 @@ public class SSequenceDiagram {
 	}
 	
 	public Predicate getPredicate(){
-		return new Predicate("SD_" + mades_sd.getName());
+		return new Predicate("$SD_" + mades_sd.getName());
 	}
 	
 	public Predicate getPredicateStart(){
